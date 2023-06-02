@@ -5,7 +5,7 @@ public class Scripture
     public List<Word> _words;
     public int _randomWord;
     public Random _random = new Random();
-    Reference refrence = new Reference();
+    Reference reference = new Reference();
     string _reference;
     public Scripture()
     {
@@ -32,7 +32,7 @@ public class Scripture
         }
     public string ShowScripture()
         {
-            refrence.getReference();
+            reference.getReference();
             string all = $"{_reference}-{_text}";
             return all;
         }
