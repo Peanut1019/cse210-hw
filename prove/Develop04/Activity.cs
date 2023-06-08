@@ -23,7 +23,7 @@ public class Activity
     return $"Well done!";
    }
    public void pausingSpinner(){
-    DateTime sartTime = DateTime.Now;
+    DateTime startTime = DateTime.Now;
     DateTime futureTime = startTime.AddSeconds(5);
     Thread.Sleep(3000);
     DateTime currentTime = DateTime.Now;
