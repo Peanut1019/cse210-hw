@@ -2,15 +2,14 @@ using System;
 
 class Program
 {
-    private static readonly string activityName;
-    private static readonly string description;
-    
-    private static readonly int duration;
-    private static readonly string entries;
+    public static string entries { get; private set; }
+    public static int duration { get; private set; }
+    public static string description { get; private set; }
+    public static string activityName { get; private set; }
 
     static void Main(string[] args)
     {
-        Console.WriteLine("1.Start Breathing Activity\n 2. Atart Reflecting Activity 3. Start Listing Activity 4. Quit");
+        Console.WriteLine("1.Start Breathing Activity\n 2. Start Reflecting Activity\n 3. Start Listing Activity\n 4. Quit");
         int answer = int.Parse(Console.ReadLine());
         while (answer != 4){
             Activity a1 = new Activity(activityName, description, duration);
@@ -20,12 +19,16 @@ class Program
                 Console.WriteLine("How long, in seconds, do you wish to do this activity?");
                 int duration = int.Parse(Console.ReadLine());
                 Breathing breath1 = new Breathing(activityName, description, duration);
-                while (duration != 0)
+                DateTime startTime = DateTime.Now;
+                DateTime futureTime = startTime.AddSeconds(duration);
+                Thread.Sleep(3000);
+                DateTime currentTime = DateTime.Now;
+                if (currentTime < futureTime)
                 {
-                    a1.timeLeft();
                     breath1.displayBreathIn();
                     a1.pasuingCountdownTimer();
                     breath1.displayBreathOut();
+                    a1.pasuingCountdownTimer();
                 }
                 a1.displayEndingMessage();
                 
@@ -38,9 +41,12 @@ class Program
                 Reflection ref1 = new Reflection(activityName, description, duration);
                 ref1.GetRandomPrompt();
                 a1.pasuingCountdownTimer();
-                while (duration != 0)
+                DateTime startTime = DateTime.Now;
+                DateTime futureTime = startTime.AddSeconds(duration);
+                Thread.Sleep(3000);
+                DateTime currentTime = DateTime.Now;
+                if (currentTime < futureTime)
                 {
-                    a1.timeLeft();
                     ref1.GetRandomThink();
                     a1.pausingSpinner();
                 }
@@ -54,15 +60,20 @@ class Program
                 Listing list1 = new Listing(activityName, description, duration, entries);
                 list1.GetRandomPrompt();
                 a1.pasuingCountdownTimer();
-                while (duration != 0)
+                DateTime startTime = DateTime.Now;
+                DateTime futureTime = startTime.AddSeconds(duration);
+                Thread.Sleep(3000);
+                DateTime currentTime = DateTime.Now;
+                if (currentTime < futureTime)
                 {
-                    a1.timeLeft();
                     string entries = Console.ReadLine();
+                    
                 }
+                list1.EntryCount();
                 a1.displayEndingMessage();
             }
             
-            Console.WriteLine("1.Start Breathing Activity\n 2. Atart Reflecting Activity 3. Start Listing Activity 4. Quit");
+            Console.WriteLine("1.Start Breathing Activity\n 2.Start Reflecting Activity\n 3. Start Listing Activity\n 4. Quit");
             answer = int.Parse(Console.ReadLine());
         }
         Console.WriteLine("Goodbye!");

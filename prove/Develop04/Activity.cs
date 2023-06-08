@@ -10,11 +10,6 @@ public class Activity
     _description = description;
     _duration = duration;
    }
-   public int timeLeft() 
-   {
-    _duration = _duration - 1;
-    return _duration;
-   }
    public string displayStartingMessage(string v, string v1)
     {
     return $"{_activityName}\n{_description}";

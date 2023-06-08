@@ -16,11 +16,11 @@ public class Reflection : Activity
         "How can you keep this experience in mind in the future?\n"
         };
     private string _thinker;
-    public string GetRandomThink()
+    public void GetRandomThink()
     {
     int random_index = _random.Next(_think.Count);
     _thinker = _think[random_index];
-    return $"{_thinker}";
+    Console.WriteLine($"{_thinker}");
     }
     public List<string> _prompts = new List<string>(){
     "Think of a time when you stood up for someone else.\n",
@@ -29,10 +29,10 @@ public class Reflection : Activity
     "Think of a time when you did something truly selfless.\n"
         };
          private string _prompt = "";
-   public string GetRandomPrompt(){
+   public void GetRandomPrompt(){
     int random_index = _random.Next(_prompts.Count);
             _prompt = _prompts[random_index];
-            return _prompt;
+            Console.WriteLine($"{_prompt}");
    }
 
     

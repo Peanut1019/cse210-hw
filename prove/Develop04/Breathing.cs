@@ -3,10 +3,10 @@ public class Breathing : Activity{
     public Breathing(string activityName, string description, int duration) : base(activityName, description, duration){
 
     }
-    public string displayBreathIn(){
-        return $"Breath In...";
+    public void displayBreathIn(){
+        Console.WriteLine($"Breath In...");
     }
-    public string displayBreathOut(){
-        return $"Breath Out...";
+    public void displayBreathOut(){
+        Console.WriteLine($"Breath Out...");
     }
 }
