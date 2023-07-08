@@ -4,12 +4,16 @@ class Program
 {
     private static readonly int points;
     private static readonly bool complete;
+    private static readonly bool check;
     private static readonly string description;
     private static readonly string name;
-
+    private static readonly int timesToComplete;
+    private static readonly int bonusPoints;
     static void Main(string[] args)
     {
-        Goal goal = new Goal(name, description, points, complete);
+        ChecklistGoal cgoal = new ChecklistGoal(timesToComplete,bonusPoints, name, description, points, complete);
+        EternalGoal egoal = new EternalGoal(name, description, points, complete);
+        SimpleGoal sgoal = new SimpleGoal(name, description,points,complete, check);
         int option = 0;
         Console.WriteLine($"You have {goal.GetPoints}");
         Console.WriteLine("Menu Options:");

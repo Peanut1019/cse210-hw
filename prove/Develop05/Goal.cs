@@ -1,5 +1,5 @@
 using System;
-public class Goal
+public abstract class Goal
 {
     private string _name;
     private int _pionts; 
