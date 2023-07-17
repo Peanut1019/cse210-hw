@@ -12,6 +12,8 @@ public abstract class Goal
     private int _option;
     List <string> _goals = new List<string>();
     private bool check;
+    private int timesToComplete;
+    private int bonusPoints;
     private readonly bool complete;
 
     public Goal(string name, string description, int points, bool complete)
@@ -23,7 +25,7 @@ public abstract class Goal
     }
     public string GetName()
     {
-        return $"{_name}";
+        return _name;
     }
     public string GetDescription()
     {
@@ -34,7 +36,9 @@ public abstract class Goal
         return _pionts;
     }
     public void CreateNewGoal(){
+        
         do{
+            while (_option != 4){
             Console.WriteLine("The types of goals are:");
             Console.WriteLine("1. Simple Goal");
             Console.WriteLine("2. Eternal Goal");
@@ -61,8 +65,10 @@ public abstract class Goal
                     int _timesToComplete = int.Parse(Console.ReadLine());
                     Console.Write("What is the bonus for accomplishing this goal?");
                     int _bonusPoints = int.Parse(Console.ReadLine());
+                    _goal = new ChecklistGoal(timesToComplete, bonusPoints, name, description, points, complete);
                     break;
             }
+        }
         }
     }
     public void SaveGoals(string filename)
@@ -83,7 +89,7 @@ public abstract class Goal
                 outputFile.WriteLine($"Eternal: {goal.GetName()},{goal.GetDescription()},{goal.GetPoints()}");
             }
             else if(goal is ChecklistGoal){
-                outputFile.WriteLine($"Checklist: {goal.GetName()},{goal.GetDescription()},{goal.GetPoints()},{((ChecklistGoal)goal).GetBonus()}, {((ChecklistGoal)goal).GetTotal}");
+                outputFile.WriteLine($"Checklist: {goal.GetName()},{goal.GetDescription()},{goal.GetPoints()},{((ChecklistGoal)goal).GetBonus()}, {((ChecklistGoal)goal).SumOfAll()}");
             }
         }
     
@@ -112,7 +118,7 @@ public abstract class Goal
         _goal = new EternalGoal(getInfo[0], getInfo[1], int.Parse(getInfo[2]), bool.Parse(getInfo[3]));
      }
      else{
-        _goal = new ChecklistGoal(int.Parse(getInfo[4]), int.Parse(getInfo[3]), getInfo[1], int.Parse(getInfo[2]), bool.Parse(getInfo[5]));
+        _goal = new ChecklistGoal(int.Parse(getInfo[4]), int.Parse(getInfo[3]),getInfo[0], getInfo[1], int.Parse(getInfo[2]), bool.Parse(getInfo[5]));
         ((ChecklistGoal)_goal).SetTimesCompleted(int.Parse(getInfo[5]));
      }
      _goals.Add(_goal);  

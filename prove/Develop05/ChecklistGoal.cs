@@ -13,7 +13,7 @@ private int _numer;
 }
 
 
-    public int GetTimesToComplete()
+public int GetTimesToComplete()
 {
 return _timesToComplete;
 }
@@ -36,6 +36,9 @@ public int CalcualteCompletedCount(bool complete)
  }
  return _numer;
 }
+public int SumOfAll(){
+    return _total + _bonusPoints;
+}
 public override bool IsCompleted()
 {
  return true;
@@ -51,7 +54,9 @@ public override int EarnPoints(bool complete, int points)
  }
  return _total;
 }
-
+public int GetTimesCompleted(){
+    return _timesCompleted;
+}
 internal void SetTimesCompleted()
     {
         _timesCompleted = _timesToComplete - 1;
@@ -62,15 +67,9 @@ internal void SetTimesCompleted()
         Console.WriteLine($"Checklist: {_timesToComplete}. {complete} {name} {description} {_timesCompleted}");
     }
 
-    internal void SetTimesCompleted(int v)
-    {
-        throw new NotImplementedException();
-    }
+    
 
-    public static explicit operator ChecklistGoal(string v)
-    {
-        throw new NotImplementedException();
-    }
+   
 
     public static implicit operator string(ChecklistGoal v)
     {

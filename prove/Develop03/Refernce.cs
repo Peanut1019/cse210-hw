@@ -5,7 +5,7 @@ public class Reference
     private int _chapter;
     private int _verseStart;
     private int _verseEnd;
-    public string _reference;
+    public string _ref;
 
     public Reference()
     {
@@ -33,12 +33,12 @@ public class Reference
     {
         if (_verseStart == _verseEnd)
         {
-            _reference =  $"{_book}{_chapter}:{_verseStart}";
+            _ref =  $"{_book}{_chapter}:{_verseStart}";
         }
         else
         {
-            _reference =  $"{_book}{_chapter}:{_verseStart}{_verseEnd}";
+            _ref =  $"{_book}{_chapter}:{_verseStart}{_verseEnd}";
         }
-        return _reference;
+        return _ref;
     }
 }

@@ -5,8 +5,10 @@ public class Scripture
     public List<Word> _words;
     public int _randomWord;
     public Random _random = new Random();
-    Reference reference = new Reference();
-    string _reference;
+    Reference r1 = new Reference();
+    Word w1 = new Word();
+    public string _reference;
+   
     public Scripture()
     {
     }
@@ -15,7 +17,7 @@ public class Scripture
     {
         _text = text;
         _words = new List<Word>();
-        string [] words = text.Split('_');
+        string [] words = text.Split(' ');
         foreach (string word in words)
         {
             _words.Add(new Word(word));
@@ -32,7 +34,7 @@ public class Scripture
         }
     public string ShowScripture()
         {
-            reference.getReference();
+            _reference = r1.getReference();
             string all = $"{_reference}-{_text}";
             return all;
         }

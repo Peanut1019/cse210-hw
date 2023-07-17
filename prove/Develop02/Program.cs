@@ -28,7 +28,7 @@ class Program
 }
        if (number == 4) {
         Journal journal1 = new Journal();
-        journal1.write;
+        journal1.write();
         }
         if (number == 5) {
             Console.WriteLine("Goodbye!");
