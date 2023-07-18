@@ -11,8 +11,9 @@ using System;
         string _entry;
         public string PromptUserEntry()
     {
-        prompt.readPrompt();
-        string _entry = Console.ReadLine();
+        _prompt = prompt.getPrompt();
+        Console.WriteLine(_prompt);
+        _entry = Console.ReadLine();
         _allEntries.Add(dateText);
         _allEntries.Add(_prompt);
         _allEntries.Add(_entry);

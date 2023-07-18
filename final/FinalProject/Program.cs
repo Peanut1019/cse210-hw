@@ -4,19 +4,20 @@ class Program
 {
     static void Main(string[] args)
     {
-       int calories = 0;
-       string aors = "a";
-       Tracking t1 = new Tracking(calories, aors);
-       Console.WriteLine("How many calories would you like to record?");
-        calories = int.Parse(Console.ReadLine());
-        t1.DisplayCalories();
-        Console.WriteLine("Would you like to add(a) or subtract(s) that from your total?");
-        aors = Console.ReadLine();
-        if (aors == "a"){
-            Console.WriteLine("Okay, adding that to your total!");
+       Console.WriteLine("Welcome! You currently have this many calories:");
+       string _deside;
+       int cal = 0;
+       Console.WriteLine("Would you like to record a calorie event? (y/n)");
+        _deside = Console.ReadLine();
+        //t1.LoadCals();
+        if (_deside == "y"){
+            Tracking t1 = new Tracking(cal);
+            t1.CalculateCalories();
+            cal = t1.GetCalories();
+            t1.DisplayCalories();
         }
         else{
-            Console.WriteLine("Okay, subtracting that from your total!");
+            Console.WriteLine("Okay... have a nice day, I guess.");
         }
 
     }
