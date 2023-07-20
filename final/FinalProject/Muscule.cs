@@ -1,23 +1,26 @@
 using System;
-public class Muscule : TrackingActivity{
+public class Muscule : Trackable{
 private int _reps;
 private int _weight;
-private int _subcal;
-public Muscule(int calories, int subcal) : base(calories, subcal){
+private string _musact;
+public Muscule(int calories) : base(calories){
 
 }
-public void SubPushup(){
-  Console.WriteLine("How heavy was the weight (in pounds)?");
-_weight = int.Parse(Console.ReadLine());
-Console.WriteLine("How many reps did you do?");
-_reps = int.Parse(Console.ReadLine());
-_subcal = (int)(_reps * _weight * .32);  
-}
-public void SubCurling(){
+public override double computeCalories(){
+Console.WriteLine("Write: 'f' for lifting and 'c' for curling");
+_musact = Console.ReadLine();
 Console.WriteLine("How heavy was the weight (in pounds)?");
 _weight = int.Parse(Console.ReadLine());
 Console.WriteLine("How many reps did you do?");
 _reps = int.Parse(Console.ReadLine());
-_subcal = (int)(_weight / 60 * 4.5 * _reps);
+if (_musact == "l"){
+return _reps * _weight * .32;  
+}
+else if (_musact == "c"){
+  return _weight / 60 * 4.5 * _reps;
+}
+else{
+  return 0;
+}
 }
 }

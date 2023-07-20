@@ -2,37 +2,18 @@ using System;
 public class Tracking{
 
 private int _calories;
-private int _option;
+
 private string defilename = "cals.txt";
 List <int> _calCount = new List<int>();
-public Tracking(int calories){
-_calories = calories;
+public Tracking(int cal){
+_calories = cal;
 }
-public void CalculateCalories(){
-Console.WriteLine("Choose one:");
-Console.WriteLine("1: Had Food");
-Console.WriteLine("2: Did Activity");
-Console.WriteLine("What would you like to log?");
-_option = int.Parse(Console.ReadLine());
-switch(_option){
-case 1:
-tf1.AddCalories();
-_calories =+ addCal;
-break;
-case 2:
-ta1.SubCalories();
-_calories =- subCal;
-break;
-}
-}
-TrackingFood tf1 = new TrackingFood(calories, addCal);
-TrackingActivity ta1 = new TrackingActivity(calories, subCal);
-    protected static int calories;
-
-    public static int addCal { get; private set; }
-    public static int subCal { get; private set; }
-
-    
+private double calories;
+  
+    public void update(Trackable item)
+  {
+    this.calories += item.computeCalories();
+  }
 
 public int GetCalories(){
 return _calories;
