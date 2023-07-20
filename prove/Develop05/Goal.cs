@@ -4,13 +4,12 @@ public abstract class Goal
     private string _name;
     private int _pionts; 
     private string _description;
-    private string _type;
     private bool _complete;
     private string filename = "goals.txt";
     private int _total;
     private string  _goal;
     private int _option;
-    List <string> _goals = new List<string>();
+    List <Goal> _goals = new List<Goal>();
     private bool check;
     private int timesToComplete;
     private int bonusPoints;
@@ -37,28 +36,31 @@ public abstract class Goal
     }
     public void CreateNewGoal(){
         
+        
         do{
-            while (_option != 4){
+            
             Console.WriteLine("The types of goals are:");
             Console.WriteLine("1. Simple Goal");
             Console.WriteLine("2. Eternal Goal");
             Console.WriteLine("3. Checklist Goal");
             Console.WriteLine("Which would you like to create?");
             _option = int.Parse(Console.ReadLine());
-            _goal = null;
+            Goal _goal = null;
+            if (_option != 4){
             Console.WriteLine("What is the name of your goal?");
             string name = Console.ReadLine();
             Console.WriteLine("What is a short description of it?");
             string description = Console.ReadLine();
             Console.WriteLine("What is the amount of points associated with this goal?");
             int points = int.Parse(Console.ReadLine());
-            
             switch(_option){
                 case 1:
                     _goal = new SimpleGoal(name, description, points, false, check);
+                    _goals.Add(_goal);
                     break;
                 case 2:
                     _goal = new EternalGoal(name, description, points, complete);
+                    _goals.Add(_goal);
                     break;
                 case 3:
                     Console.Write("How many times does this goal need to be accomplished?");
@@ -66,10 +68,12 @@ public abstract class Goal
                     Console.Write("What is the bonus for accomplishing this goal?");
                     int _bonusPoints = int.Parse(Console.ReadLine());
                     _goal = new ChecklistGoal(timesToComplete, bonusPoints, name, description, points, complete);
+                    _goals.Add(_goal);
                     break;
             }
-        }
-        }
+            }
+        
+        }while (_option != 4);
     }
     public void SaveGoals(string filename)
     {
@@ -107,7 +111,7 @@ public abstract class Goal
         _pionts = int.Parse(line);
     }
     else{
-     _goals = null;
+     Goal _goal = null;
      string[] getType = line.Split(":");
      string[] getInfo = getType[1].Split(",");
      if(getType[0] == "Simple"){
@@ -119,7 +123,7 @@ public abstract class Goal
      }
      else{
         _goal = new ChecklistGoal(int.Parse(getInfo[4]), int.Parse(getInfo[3]),getInfo[0], getInfo[1], int.Parse(getInfo[2]), bool.Parse(getInfo[5]));
-        ((ChecklistGoal)_goal).SetTimesCompleted(int.Parse(getInfo[5]));
+        ((ChecklistGoal)_goal).SetTimesCompleted(int.Parse(getInfo[4]));
      }
      _goals.Add(_goal);  
     }
@@ -129,7 +133,7 @@ public abstract class Goal
     }
     public void ListGoals(){
         int counter = 0;
-        foreach(string goal in _goals){
+        foreach(Goal goal in _goals){
             counter+=1;
             string checkIfDone = goal.IsCompleted() ? "[x]" : "[]";
             string _timesCompleted = goal is ChecklistGoal ? $"---Currently Completed: {((ChecklistGoal)goal).GetTimesCompleted()}/{((ChecklistGoal)goal).GetTimesToComplete}" : "";
@@ -151,10 +155,10 @@ public abstract class Goal
     {
     int counter = 0;
     Console.WriteLine("The goals are:");
-    foreach (string _goal in _goals)
+    foreach (Goal goal in _goals)
     {
         counter++;
-        Console.WriteLine($"{counter}. {_goal.GetName()}");
+        Console.WriteLine($"{counter}. {goal.GetName()}");
     }
     Console.Write("Which goal did you accomplish?");
     int _decision = int.Parse(Console.ReadLine());

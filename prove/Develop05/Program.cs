@@ -11,11 +11,16 @@ class Program
     private static readonly int bonusPoints;
     static void Main(string[] args)
     {
+        List<Goal> goals = new List<Goal>();
         ChecklistGoal cgoal = new ChecklistGoal(timesToComplete,bonusPoints, name, description, points, complete);
+        goals.Add(cgoal);
         EternalGoal egoal = new EternalGoal(name, description, points, complete);
+        goals.Add(egoal);
         SimpleGoal sgoal = new SimpleGoal(name, description,points,complete, check);
+        goals.Add(sgoal);
         int option = 0;
-        Console.WriteLine($"You have {goal.GetPoints}");
+        while (option != 6){
+            foreach (Goal g in goals){
         Console.WriteLine("Menu Options:");
         Console.WriteLine("1. Create New Goal");
         Console.WriteLine("2. List Goals");
@@ -27,27 +32,26 @@ class Program
         option = int.Parse(Console.ReadLine());
         switch(option){
             case 1:
-            goal.CreateNewGoal();
+            g.CreateNewGoal();
             break;
             case 2:
-            goal.ListGoals();
+            g.ListGoals();
             break;
             case 3:
             Console.Write ("What is the filename for the goal file? ");
             string fileName = Console.ReadLine();
-            goal.SaveGoals(fileName);
+            g.SaveGoals(fileName);
             break;
             case 4:
             Console.Write ("What is the filename for the goal file? ");
             string filEname = Console.ReadLine();
-            goal.LoadGoals(filEname);
+            g.LoadGoals(filEname);
             break;
             case 5:
-            goal.RecordEvent();
+            g.RecordEvent();
             break;
-            case 6:
-            Console.WriteLine("Thanks fo doing this!");
-            break;
+        }
+        }
         }
     }
 }

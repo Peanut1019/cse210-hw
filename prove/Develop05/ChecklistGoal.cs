@@ -57,7 +57,7 @@ public override int EarnPoints(bool complete, int points)
 public int GetTimesCompleted(){
     return _timesCompleted;
 }
-internal void SetTimesCompleted()
+internal void SetTimesCompleted(int v)
     {
         _timesCompleted = _timesToComplete - 1;
     }
@@ -72,6 +72,11 @@ internal void SetTimesCompleted()
    
 
     public static implicit operator string(ChecklistGoal v)
+    {
+        throw new NotImplementedException();
+    }
+
+    public static explicit operator ChecklistGoal(string v)
     {
         throw new NotImplementedException();
     }
