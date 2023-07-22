@@ -17,7 +17,7 @@ public class Scripture
     {
         _text = text;
         _words = new List<Word>();
-        string [] words = text.Split(' ');
+        string [] words = text.Split('_');
         foreach (string word in words)
         {
             _words.Add(new Word(word));

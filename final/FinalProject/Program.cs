@@ -8,7 +8,7 @@ class Program
        int cal = 0;
        int _opt;
        int _option;
-       Healthy h1 = new Healthy(cal);
+Healthy h1 = new Healthy(cal);  
 Junk j1 = new Junk(cal);
 Cardio c1 = new Cardio(cal);
 Muscule m1 = new Muscule(cal);
@@ -17,7 +17,7 @@ Warmup w1 = new Warmup(cal);
         _deside = Console.ReadLine();
         Tracking t1 = new Tracking(cal);
         t1.LoadCals();
-        if (_deside == "y"){
+        while (_deside == "y"){
             
             Console.WriteLine("Choose one:");
 Console.WriteLine("1: Had Food");
@@ -32,10 +32,11 @@ Console.WriteLine("2. Junk");
 Console.WriteLine("Which one did you consume?");
 _opt = int.Parse(Console.ReadLine());
 if (_opt == 1){
-h1.computeCalories();
+
+t1.update(h1);
 }
 else if (_opt == 2){
-j1.computeCalories();
+t1.update(j1);
 }
 break;
 case 2:
@@ -47,22 +48,20 @@ Console.WriteLine("Which one did you consume?");
 _opt = int.Parse(Console.ReadLine());
         
     if (_opt == 1){
-    c1.computeCalories();
+    t1.update(c1);
         }
     else if (_opt == 2){
-    m1.computeCalories();
+    t1.update(m1);
     }
     else if (_opt == 3){
-        w1.computeCalories();
+        t1.update(w1);
     }
 break;
 }
+            
             cal = t1.GetCalories();
             t1.DisplayCalories();
             t1.SaveCals();
-        }
-        else{
-            Console.WriteLine("Okay... have a nice day, I guess.");
         }
 
     }

@@ -2,6 +2,7 @@ using System;
 public class Cardio : Trackable{
 private int _distance;
 private string _caract;
+private double _subcal;
 public Cardio(int calories) : base(calories){
 
 }
@@ -13,10 +14,12 @@ _caract = Console.ReadLine();
 Console.WriteLine("How far did you go (in miles)?");
 _distance = int.Parse(Console.ReadLine());
 if (_caract == "w"){
-return _distance * 80;
+_subcal = _distance * 80;
+return _subcal;
 }
 else if (_caract =="r"){
-return _distance * 100;
+_subcal = _distance * 100;
+return _subcal;
 }
 else{
     return 0;

@@ -6,7 +6,7 @@ private int _calories;
 private string defilename = "cals.txt";
 List <int> _calCount = new List<int>();
 public Tracking(int cal){
-_calories = cal;
+calories = cal;
 }
 private double calories;
   
@@ -16,17 +16,16 @@ private double calories;
   }
 
 public int GetCalories(){
-return _calories;
+return (int)(calories);
 }
 public void DisplayCalories(){
-Console.WriteLine($"{_calories}");
+Console.WriteLine($"{calories}");
 }
 
 
 public void SaveCals(){
 using (StreamWriter outputFile = new StreamWriter(defilename)){
-    
-    outputFile.WriteLine($"Calories: {_calories}");
+    outputFile.WriteLine($"Calories: {GetCalories()}");
 }
 }
 public void LoadCals(){

@@ -4,6 +4,7 @@ private int _grams;
 private string _sugar;
 private string _carbs;
 private string _jfood;
+private double _addcal;
 public Junk(int calories): base(calories){
 
 }
@@ -36,13 +37,16 @@ _carbs = Console.ReadLine();
 Console.WriteLine("How much did you consume in grams?");
 _grams = int.Parse(Console.ReadLine());
 if (_carbs == "bread"){
-    return _grams * 2.63;
+    _addcal = _grams * 2.63;
+    return _addcal;
 }
 else if (_carbs == "crackers"){
-    return _grams * 5.06;
+    _addcal = _grams * 5.06;
+    return _addcal;
 }
 else if (_carbs == "cookies"){
-    return _grams * 5;
+    _addcal = _grams * 5;
+    return _addcal;
 }  
 else{
     return 0;

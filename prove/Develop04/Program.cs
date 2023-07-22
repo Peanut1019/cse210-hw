@@ -9,9 +9,10 @@ class Program
 
     static void Main(string[] args)
     {
-        Console.WriteLine("1.Start Breathing Activity\n 2. Start Reflecting Activity\n 3. Start Listing Activity\n 4. Quit");
-        int answer = int.Parse(Console.ReadLine());
+        int answer = 0;
         while (answer != 4){
+            Console.WriteLine("1.Start Breathing Activity\n 2.Start Reflecting Activity\n 3. Start Listing Activity\n 4. Quit");
+            answer = int.Parse(Console.ReadLine());
             Activity a1 = new Activity(activityName, description, duration);
             if (answer == 1)
             {
@@ -59,22 +60,21 @@ class Program
                 int duration = int.Parse(Console.ReadLine());
                 Listing list1 = new Listing(activityName, description, duration, entries);
                 list1.GetRandomPrompt();
-                a1.pasuingCountdownTimer();
                 DateTime startTime = DateTime.Now;
                 DateTime futureTime = startTime.AddSeconds(duration);
                 Thread.Sleep(3000);
                 DateTime currentTime = DateTime.Now;
-                if (currentTime < futureTime)
+                while (currentTime < futureTime)
                 {
                     string entries = Console.ReadLine();
+                    a1.pasuingCountdownTimer();
                     
                 }
                 list1.EntryCount();
                 a1.displayEndingMessage();
             }
             
-            Console.WriteLine("1.Start Breathing Activity\n 2.Start Reflecting Activity\n 3. Start Listing Activity\n 4. Quit");
-            answer = int.Parse(Console.ReadLine());
+            
         }
         Console.WriteLine("Goodbye!");
     }

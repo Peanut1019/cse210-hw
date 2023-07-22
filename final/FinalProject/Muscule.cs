@@ -3,6 +3,7 @@ public class Muscule : Trackable{
 private int _reps;
 private int _weight;
 private string _musact;
+private double _subcal;
 public Muscule(int calories) : base(calories){
 
 }
@@ -14,10 +15,12 @@ _weight = int.Parse(Console.ReadLine());
 Console.WriteLine("How many reps did you do?");
 _reps = int.Parse(Console.ReadLine());
 if (_musact == "l"){
-return _reps * _weight * .32;  
+_subcal = _reps * _weight * .32;
+return _subcal; 
 }
 else if (_musact == "c"){
-  return _weight / 60 * 4.5 * _reps;
+  _subcal = _weight / 60 * 4.5 * _reps;
+  return _subcal;
 }
 else{
   return 0;

@@ -4,7 +4,8 @@ private int _amount;
 private string _fruit;
 private string _veg;
 private string _meat;
-private string _helfood;    
+private string _helfood;
+private double _addcal;    
 public Healthy(int calories): base(calories){
 }
 public override double computeCalories(){
@@ -17,13 +18,16 @@ _fruit = Console.ReadLine();
 Console.WriteLine("How much did you consume?");
 _amount = int.Parse(Console.ReadLine());
     if (_fruit == "apple"){
-    return _amount * .52;
+    _addcal = _amount * .52;
+    return _addcal;
 }
     else if (_fruit == "bannana"){
-    return _amount * .89;
+    _addcal = _amount * .89;
+    return _addcal;
 }
     else if (_fruit == "kiwi"){
-    return _amount * .61;
+    _addcal = _amount * .61;
+    return _addcal;
 }
     else{
         return 0;
@@ -36,13 +40,16 @@ _veg = Console.ReadLine();
 Console.WriteLine("How much did you consume?");
 _amount = int.Parse(Console.ReadLine());
 if (_veg == "broccoli"){
-    return _amount * .34;
+    _addcal = _amount * .34;
+    return _addcal;
 }
 else if (_veg == "carrots"){
-    return _amount * .41;
+    _addcal = _amount * .41;
+    return _addcal;
 }
 else if (_veg == "peas"){
-    return _amount * .81;
+    _addcal = _amount * .81;
+    return _addcal;
 }
 else{
     return 0;
@@ -55,13 +62,16 @@ _meat = Console.ReadLine();
 Console.WriteLine("How much did you consume (grams)?");
 _amount = int.Parse(Console.ReadLine());
 if (_meat == "chicken"){
-    return (int)(_amount * 1.65);
+    _addcal = _amount * 1.65;
+    return _addcal;
 }
 else if (_meat == "pork"){
-    return (int)(_amount * 2.42);
+    _addcal = _amount * 2.42;
+    return _addcal;
 }
 else if (_meat == "beef"){
-    return _amount * 2.5;
+    _addcal = _amount * 2.5;
+    return _addcal;
 }
 else{
     return 0;

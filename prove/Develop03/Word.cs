@@ -16,5 +16,6 @@ public class Word
     public void Hide()
     {
         _hidden = true;
+        _text = "_";
     }
 }
